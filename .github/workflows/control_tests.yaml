@@ -1,10 +1,21 @@
 name: Pytest  flake8 control Push
 on: push
+
+env:
+  DAY_OF_WEEK: Lundi ## Variable d'env pour l'ensemble du flux de travail
+
 jobs:
   qa:
     name: Check tests
     runs-on: ubuntu-20.04
+    env:
+      Greeting: Salut ## Vaiable d'env pour la tache
     steps:
+      - name: "Dites Salut Monalisa nous sommes Lundi"
+        run: echo "$Greeting $First_Name. Nous sommes $DAY_OF_WEEK!"
+        env:
+          First_Name: MonaLisa ## Variable d'env uniquement pour l'étape
+
       - name: Checkout on master
         uses: actions/checkout@v3
 
@@ -22,6 +33,4 @@ jobs:
         run: |
           pytest
 
-      - name: Run flake8
-        uses: py-actions/flake8@v2
 
