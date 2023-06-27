@@ -17,7 +17,7 @@ jobs:
      needs: ["run-shell-command"]
      steps:
        - name: current directory with powershell
-         run: Get_Location
+         run: ls 
        - name: current directory with bash
          run: pwd
          shell: bash
